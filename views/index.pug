@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  - var aboutMe = aboutMeText
+  body#main
+    main
+      div.hamburger#menu-toggle
+        span.top
+        span.middle
+        span.bottom
+      div.overlay#menu-overlay
+        nav.overlay-menu
+          ul
+            li
+              a(href='#') Home
+            li
+              a(href='/projects/le-voyageur-mignon') Le Voyageur Mignon
+            li
+              a(href='/projects/comedic-news') Comedic News
+            li
+              a(href='/projects/nutrition') Fundamentals of Nutrition
+            li
+              a(href='/projects/wrist-racer') Wrist Racer
+      section#welcome-section
+        div#welcome-text
+          div#pre-text-div
+            span#pre-text Welcome to the Portfolio of
+          div#welcome-name-div
+            h1#welcome-name Tony Nguyen
+          div#welcome-tagline-div
+            span#welcome-tagline Web Developer
+        a(href='#')#down-arrow &#x21D3;
+        #pentagon
+      section#works-section
+        section#le-vm
+          div.works-section-inner#le-vm-inner
+            a(href='/projects/le-voyageur-mignon')
+              h2#title-le-voyageur-mignon Le Voyageur Mignon
+        section#comedic-news
+          a(href='/projects/comedic-news')
+            img(src='./images/comedic-news-logo.png' alt='Comedic News logo')
+        a(href='/projects/nutrition')
+          section#nutrition
+            div.works-section-inner#nutrition-inner
+              h2#title-nutrition Fundamentals of Nutrition
+        section#wrist-racer
+          a(href='/projects/wrist-racer')
+            img(src='./images/wr-logo.png' alt='Wrist Racer logo')
+      footer#main-footer
+        section.portrait-section
+          div.portrait-image
+          div.about-me-text
+            h3.about-me About Me
+            each val in aboutMe
+              p= val
+          include includes/footer-contact.pug
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/plugins/ScrollToPlugin.min.js')
+    script(src='./javascripts/main.js')

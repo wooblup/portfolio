@@ -1,0 +1,56 @@
+extends layout
+
+block content
+    - var data = projectData[0]
+    body#project
+        main
+            div.hamburger#menu-toggle
+                span.top
+                span.middle
+                span.bottom
+            div.overlay#menu-overlay
+                nav.overlay-menu
+                    ul
+                        li
+                            a(href='/') Home
+                        li
+                            a(href='/projects/le-voyageur-mignon') Le Voyageur Mignon
+                        li
+                            a(href='/projects/comedic-news') Comedic News
+                        li
+                            a(href='/projects/nutrition') Fundamentals of Nutrition
+                        li
+                            a(href='/projects/wrist-racer') Wrist Racer
+            section(id='project-'+data.id)
+                div.project-description
+                    div#project-title
+                        h1(id='title-'+data.id)= data.name
+                    div#project-overview-div
+                        p#project-overview= data.description
+                        if data.github
+                            a(href=data.github, target='_blank').project-link View on GitHub
+                    div#project-info
+                        div#project-client-div
+                            h3#project-client Client
+                            p= data.client
+                        div#project-role-div
+                            h3#project-role Role
+                            p= data.role
+                        div#project-year-div
+                            h3#project-year Year
+                            p= data.year
+                        div#project-technologies-div
+                            h3#project-technologies Technologies
+                            ul
+                                each val in data.technologies
+                                    li= val
+                    div#project-down-arrow-div
+                        a(href='#')#project-down-arrow &#x21D3;
+            section.project-photos
+                each val in data.photos
+                    img(src='./../images/'+val, alt="")
+            footer#project-footer
+                include includes/footer-contact.pug
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/plugins/ScrollToPlugin.min.js')
+    script(src='./../javascripts/main.js')
